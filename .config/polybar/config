@@ -1,0 +1,222 @@
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+red = ${xrdb:red}
+selection = ${xrdb:selection}
+comment = ${xrdb:comment}
+cyan = ${xrdb:cyan}
+green = ${xrdb:green}
+orange = ${xrdb:orange}
+pink = ${xrdb:pink}
+purple = ${xrdb:purple}
+yellow = ${xrdb:yellow}
+
+[bar/main_bar]
+bottom = false
+width = 100%
+height = 35
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground =  ${colors.foreground}
+
+line-size = 2.5
+;line-color = ${colors.color4}
+
+border-size = 0
+;border-color = ${colors.color2}
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 6
+
+;font-0 = monofur:fontformat=truetype:size=9;0
+;font-0 = "Misc Tamsyn:pixelsize=12;0"
+font-0 = "Roboto Mono for Powerline:pixelsize=9;0"
+font-1 = monofur:fontformat=truetype:size=11;1
+font-2 = Font Awesome 5 Free:style=Regular:pixelsize=9;0
+font-3 = Font Awesome 5 Free:style=Solid:pixelsize=9;0
+font-4 = Font Awesome 5 Brands:style=Regular:pixelsize=9;0"
+font-5 = siji:pixelsize=10;0
+
+modules-left = i3
+modules-center = date
+modules-right = volume filesystem cpu memory battery github  nordvpnstatus powermenu
+
+tray-position = right
+tray-padding = 5
+tray-transparent = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1.0
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = false
+
+ws-icon-0 = 1:;
+ws-icon-1 = 2:;
+ws-icon-2 = 3:;
+ws-icon-3 = 4:;
+ws-icon-4 = 5:;5
+ws-icon-5 = 6:;6
+ws-icon-6 = 7:;
+ws-icon-7 = 8:;
+ws-icon-8 = 9:;
+ws-icon-9 = 10:;
+
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = ${colors.background}
+
+label-focused = %name% %icon%
+label-focused-foreground = ${colors.green}
+label-focused-background = ${colors.background}
+label-focused-underline = ${colors.green}
+
+label-focused-padding = 1
+
+label-unfocused = %name% %icon%
+label-unfocused-padding = 1
+
+label-visible = %name% %icon%
+;label-visible-underline = ${colors.color4}
+label-visible-padding = 1
+
+label-urgent = %name% %icon%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-underline = ${colors.red}
+label-urgent-padding = 2
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %a %b %d"
+
+time = "%H:%M"
+time-alt = "%H:%M"
+
+format-prefix = 
+format-foreground = ${colors.foreground}
+;format-background = ${colors.}
+format-padding = 5
+
+label = %date% %time%
+
+[module/volume]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = <ramp-volume> <label-volume>
+label-muted =  muted
+label-muted-foreground = #666
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+[module/cpu]
+type = internal/cpu
+
+label = CPU %percentage%%
+format = <label> <bar-load>
+bar-load-indicator =
+bar-load-width = 10
+bar-load-foreground-0 = ${colors.green}
+bar-load-foreground-1 = ${colors.green}
+bar-load-foreground-2 = ${colors.yellow}
+bar-load-foreground-3 = ${colors.red}
+bar-load-fill = |
+bar-load-empty = |
+bar-load-empty-foreground = #444444
+label-foreground = ${colors.foreground}
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+interval = 5
+
+label = RAM %percentage_used%%
+format = <label> <bar-used>
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = ${colors.green}
+bar-used-foreground-1 = ${colors.green}
+bar-used-foreground-2 = ${colors.yellow}
+bar-used-foreground-3 = ${colors.red}
+bar-used-fill = |
+bar-used-empty = |
+bar-used-empty-foreground = #444444
+label-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = ADP1
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <animation-charging> <label-charging>
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2-foreground = ${colors.orange}
+ramp-capacity-3-foreground = ${colors.orange}
+ramp-capacity-4-foreground = ${colors.green}
+animation-charging-0-foreground = ${colors.red}
+animation-charging-1-foreground = ${colors.red}
+animation-charging-2-foreground = ${colors.orange}
+animation-charging-3-foreground = ${colors.orange}
+animation-charging-4-foreground = ${colors.green}
+label-discharging-foreground = ${colors.green}
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-padding = 10
+label-foreground = ${colors.green}
