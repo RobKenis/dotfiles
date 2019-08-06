@@ -10,6 +10,13 @@ export ZSH="/home/rob/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 
+if [[ $INTELLIJ_TERMINAL == *enabled* ]]; then
+    # In IntelliJ
+    ZSH_THEME="miloshadzic"
+else
+    # Not in IntelliJ, this can be any other shell
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -68,7 +75,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git yarn mvn aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,3 +104,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+    export SSH_AUTH_SOCK
+fi
+
+export PATH="$PATH:$(yarn global bin)" 
+export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+
+export PROMPT_COMMAND='[ $? -eq 0 ] || printf "(╯°□ °）╯︵ ┻━┻\n"'
+precmd() { eval "$PROMPT_COMMAND" }
