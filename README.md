@@ -11,3 +11,7 @@ pacman -S git stow
 ```shell
 stow -t ~/ .
 ```
+
+## Fonts
+
+I am using the Jetbrains Mono Nerd font. Install using `pacman -S ttf-jetbrains-mono-nerd`
