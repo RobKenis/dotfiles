@@ -184,3 +184,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id "~/.config/polybar/polybar.sh &"
+exec_always feh --bg-scale $HOME/wallpapers/forrest.png
