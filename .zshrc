@@ -77,3 +77,6 @@ alias vim='nvim'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# Small w o r k a r o u n d s 
+alias git_current_branch='git rev-parse --abbrev-ref HEAD'
