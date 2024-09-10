@@ -34,6 +34,7 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
+zinit snippet OMZP::aws
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -78,5 +79,19 @@ alias vim='nvim'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # Small w o r k a r o u n d s 
 alias git_current_branch='git rev-parse --abbrev-ref HEAD'
+
+# GPG
+export GPG_TTY=$(tty)
+
+# Enable kubectl completions
+source <(kubectl completion zsh)
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
